@@ -736,7 +736,7 @@
                     <li><span class="n">L3</span><span><b>Two content engines.</b> Copy engine (email, SMS, WhatsApp, chat scripts) bound by a runtime-generated compliance gate. Design engine — Claude Code scene-stack pipeline assembling premium scenes into React Email modules with ESP-safe HTML output. Banned terms parse out of the brand spec at run time, never hardcoded.</span></li>
                     <li><span class="n">L4</span><span><b>Multi-channel deployers.</b> Email via Brevo, Klaviyo, or Omnisend. SMS via Brevo SMS or Twilio. WhatsApp via BSP. On-site chat via your widget. Same strategy plus content, different rails.</span></li>
                     <li><span class="n">L5</span><span><b>Execution and event capture.</b> Live performance data: opens, clicks, revenue per message, repeat rate, reviews, subscription state, support themes. Every event writes back into one Supabase metrics store. One source of truth for the optimiser.</span></li>
-                    <li><span class="n">L6</span><span><b>Self-improving optimisation loop.</b> Three sub-loops: performance analyser (surfaces weak nodes, dropoffs, fatigue), rules updater (adjusts segments, transitions, channel mix, frequency), content updater (rotates copy tests, refreshes proof from live support and review data).</span></li>
+                    <li><span class="n">L6</span><span><b>Self-improving optimisation loop.</b> Three sub-loops pulling from three live feedback channels: ESP performance events (from L5), customer review data (Trustpilot, Google reviews, Amazon, vertical-specific sites), and CRM plus support data (helpdesk tickets, live-chat transcripts, NPS). Performance analyser correlates message performance with review themes and support patterns. Rules updater adjusts segments, transitions, channel mix, frequency. Content updater rotates copy tests and refreshes proof from live customer signal, weekly.</span></li>
                   </ol>
                 </div>
               </div>
@@ -810,6 +810,14 @@
                   <ul class="bullets">
                     <li>Voice changes per brand. Design changes per brand. ESP changes per brand. The strategy engine, customer-state model, deployment logic and optimisation loop stay reusable.</li>
                     <li>L1 state machine and L2 blueprint live in Supabase. L3 design pipeline proven in production. Onboarding a new brand is a config swap, not a rebuild.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Optional: replace your Intercom</h5>
+                  <ul class="bullets">
+                    <li>If you currently run Intercom, Zendesk, Drift or similar, we can deploy our own Icarus-hosted CRM on your domain instead. Open-source backbone, unified ticketing, live chat, automation, all under your brand.</li>
+                    <li>Restricted-vertical-friendly. Most enterprise CRM vendors price aggressively against established brands and often refuse to onboard restricted categories at all. We do not.</li>
+                    <li>Plugs into the Retention OS feedback loop natively. Chat transcripts, ticket themes and NPS feed L6 from day one.</li>
                   </ul>
                 </div>
                 <div class="pb-block">
