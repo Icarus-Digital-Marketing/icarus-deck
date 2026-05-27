@@ -104,30 +104,29 @@
     .hero-foot .mono{font-family:var(--mono);color:var(--ink-2)}
     .hero-foot .sep{width:4px;height:4px;border-radius:50%;background:var(--ink-3)}
 
-    .signature-wrap{
+    .hero-art{
       margin-top:64px;position:relative;
       border-radius:24px;overflow:hidden;
-      background:var(--grad);
+      background:linear-gradient(135deg,#1a1830 0%,#2E2B5E 60%,#0a0a0f 100%);
       border:1px solid var(--line-2);
       box-shadow:var(--shadow);
-      aspect-ratio:18/7;
-      display:grid;place-items:center;
+      aspect-ratio:16/9;
       isolation:isolate;
     }
-    .signature-wrap img{max-height:78%;width:auto;opacity:.95;mix-blend-mode:screen;filter:saturate(1.1)}
-    .signature-wrap::after{
+    .hero-art video, .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .hero-art::after{
       content:"";position:absolute;inset:0;
       background:
-        radial-gradient(70% 90% at 30% 50%, transparent 0%, rgba(10,10,15,.35) 80%),
-        linear-gradient(180deg, transparent 65%, rgba(10,10,15,.55) 100%);
+        radial-gradient(60% 80% at 25% 40%, transparent 0%, rgba(10,10,15,.45) 80%),
+        linear-gradient(180deg, transparent 55%, rgba(10,10,15,.65) 100%);
       pointer-events:none;
     }
-    .signature-meta{
-      position:absolute;left:32px;bottom:26px;z-index:2;
-      display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);
+    .hero-art-meta{
+      position:absolute;left:32px;bottom:26px;right:32px;z-index:2;
+      display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);align-items:center;justify-content:space-between;
     }
-    .signature-meta span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.04em}
-    .signature-meta .d{width:6px;height:6px;border-radius:50%;background:var(--leaf-3)}
+    .hero-art-meta b{color:var(--ink);font-weight:600;font-size:14px;letter-spacing:.02em}
+    .hero-art-meta span.d{width:7px;height:7px;border-radius:50%;background:var(--leaf-3);box-shadow:0 0 12px var(--leaf-3)}
 
     /* =================== SECTION BASE =================== */
     section.section{padding:104px 0;position:relative}
@@ -310,6 +309,35 @@
     }
     .theme .ix svg{width:22px;height:22px}
 
+    /* =================== PILLAR DIAGRAM =================== */
+    .pillar-diagram{padding:14px 32px 18px}
+    .pillar-diagram img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line-2);display:block;background:#0a0a0f}
+
+    /* =================== PRICING =================== */
+    .pricing-wrap{padding-top:24px}
+    .price-tabs{display:inline-flex;padding:6px;border-radius:999px;border:1px solid var(--line-2);background:rgba(10,10,15,.5);margin-bottom:30px}
+    .price-tabs button{background:transparent;border:0;color:var(--ink-2);font:inherit;padding:11px 22px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;letter-spacing:.02em;transition:background .25s ease, color .25s ease}
+    .price-tabs button.active{background:var(--leaf);color:#0a0a0f}
+    .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .price-card{border:1px solid var(--line-2);border-radius:18px;padding:26px;background:linear-gradient(180deg, rgba(46,43,94,.16), rgba(10,10,15,.45));display:flex;flex-direction:column;gap:12px;min-height:240px}
+    .price-card .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf-3);font-weight:600}
+    .price-card h4{margin:0;font-size:18px;font-weight:700;letter-spacing:-.005em}
+    .price-card .amt{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
+    .price-card .amt small{font-size:13px;font-weight:500;color:var(--ink-3);letter-spacing:0;margin-left:4px;display:block;margin-top:4px}
+    .price-card p{margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+    .price-card ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+    .price-card ul li{display:flex;gap:8px;color:var(--ink-2);font-size:12.5px;align-items:flex-start}
+    .price-card ul li::before{content:"";flex:0 0 5px;height:5px;border-radius:50%;background:var(--leaf-3);margin-top:7px}
+    .price-bundle{border:1px solid rgba(91,161,46,.45);border-radius:22px;padding:42px;background:linear-gradient(135deg, rgba(46,43,94,.55), rgba(91,161,46,.16));display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
+    .price-bundle h3{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em}
+    .price-bundle .amt{font-size:46px;font-weight:800;letter-spacing:-.02em;color:var(--leaf-3);line-height:1;margin:14px 0}
+    .price-bundle .amt small{font-size:17px;color:var(--ink-2);font-weight:600}
+    .price-bundle p{color:var(--ink-2);font-size:15px;line-height:1.55;margin:0}
+    .price-bundle .save{margin-top:14px;display:inline-flex;padding:6px 12px;border-radius:999px;background:rgba(91,161,46,.18);border:1px solid rgba(91,161,46,.45);color:var(--leaf-3);font-size:12px;font-weight:600;letter-spacing:.05em}
+    .price-bundle ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .price-bundle ul li{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:14px;line-height:1.5}
+    .price-bundle ul li svg{flex:0 0 18px;color:var(--leaf-3);margin-top:2px}
+
     /* =================== KICK-OFF =================== */
     .kickoff{
       border-radius:28px;padding:64px 56px;
@@ -371,6 +399,9 @@
       .kickoff-inner{grid-template-columns:1fr}
       .pillar-body-inner{grid-template-columns:1fr}
       .pillar-head{grid-template-columns:60px 1fr auto}
+      .price-grid{grid-template-columns:repeat(2,1fr)}
+      .price-bundle{grid-template-columns:1fr;padding:32px}
+      .price-bundle ul{grid-template-columns:1fr}
     }
     @media (max-width:640px){
       .pos-grid{grid-template-columns:1fr}
@@ -380,7 +411,9 @@
       .kickoff{padding:40px 28px}
       .pillar-head{padding:24px}
       .pillar-body-inner{padding:0 24px 28px}
-      .signature-wrap{aspect-ratio:4/3}
+      .pillar-diagram{padding:14px 24px 14px}
+      .hero-art{aspect-ratio:4/3}
+      .price-grid{grid-template-columns:1fr}
       section.section{padding:72px 0}
     }
   </style>
@@ -422,11 +455,11 @@
       <span><span class="mono">verticals</span> cannabis · peptides · vape · tobacco · supplements · adult</span>
     </div>
 
-    <div class="signature-wrap reveal">
-      <img src="public/icarus-signature.gif" alt="Icarus brand signature">
-      <div class="signature-meta">
-        <span><span class="d"></span>Icarus brand signature</span>
-        <span>The agentic-systems agency</span>
+    <div class="hero-art reveal">
+      <img src="public/diagrams/01-hero-stack.png" alt="The Icarus stack — eight pillars on one operating layer">
+      <div class="hero-art-meta">
+        <span><b>The Icarus stack</b> · eight pillars on one operating layer</span>
+        <span><span class="d"></span>Scroll for the engine rooms</span>
       </div>
     </div>
   </section>
@@ -519,6 +552,9 @@
             </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-diagram">
+              <img src="public/diagrams/03-seo-loop.png" alt="The SEO publish-and-audit loop, thirteen agentic stages" loading="lazy">
+            </div>
             <div class="pillar-body-inner">
               <div>
                 <div class="pb-block">
@@ -578,18 +614,21 @@
             </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-diagram">
+              <img src="public/diagrams/04-email-architecture.png" alt="The email and retention seven-layer architecture" loading="lazy">
+            </div>
             <div class="pillar-body-inner">
               <div>
                 <div class="pb-block">
-                  <h5>The seven layers</h5>
+                  <h5>How it works, in seven steps</h5>
                   <ol class="stages">
-                    <li><span class="n">L0</span><span><b>Brand and data intake.</b> Site, PDPs, FAQs, reviews, commerce events, support tickets, returns data. The signal pool the rest of the OS reads from.</span></li>
-                    <li><span class="n">L1</span><span><b>Customer intelligence.</b> A ten-state customer state machine with four overlay flags. Eight segmentation dimensions covering goal, protocol affinity, value tier, purchase format, replenishment window, engagement, acquisition source, channel consent.</span></li>
-                    <li><span class="n">L2</span><span><b>Strategy engine.</b> Lifecycle blueprint (welcome, abandonment, post-purchase, replenishment, win-back, sunset), continuity and advocacy logic, channel and fatigue policy. ESP-agnostic.</span></li>
-                    <li><span class="n">L3</span><span><b>Content engines.</b> Copy and design split into two engines, both bound by a runtime-generated compliance gate. Banned terms parse out of your brand spec at run time, never hardcoded.</span></li>
-                    <li><span class="n">L4</span><span><b>ESP deployers.</b> Brevo, Klaviyo, Omnisend rails, plus SMS, WhatsApp and chat. Same strategy, same content, different rails.</span></li>
-                    <li><span class="n">L5</span><span><b>Event capture.</b> Webhook events flow into a metrics store. One source of truth feeds the optimiser.</span></li>
-                    <li><span class="n">L6</span><span><b>Self-improving loop.</b> Performance analyser surfaces weak nodes, drop-offs, fatigue. A rules updater adjusts segments, transitions, channel mix and frequency. A content updater rotates copy tests and refreshes proof from live support and review data.</span></li>
+                    <li><span class="n">01</span><span><b>Listen.</b> We pull everything you already know about your customers from your site, your store, your reviews and your support tickets. That is the pool every email reads from.</span></li>
+                    <li><span class="n">02</span><span><b>Sort.</b> Every customer sits in one of ten clear states (new, browsing, abandoned, first-time buyer, repeat, lapsed and so on) and carries flags for VIP, advocate, replenishment due.</span></li>
+                    <li><span class="n">03</span><span><b>Plan.</b> A lifecycle map per brand: welcome, abandoned cart, post-purchase, replenishment, win-back, sunset, advocacy. Channel mix and frequency rules locked up front.</span></li>
+                    <li><span class="n">04</span><span><b>Write and design.</b> Copy and visuals on rails. Locked to your brand voice and compliance rules. Off-brand emails cannot ship.</span></li>
+                    <li><span class="n">05</span><span><b>Deploy.</b> Whatever you run today (Klaviyo, Brevo, Omnisend or another), your flows land inside your tool. Add SMS, WhatsApp and on-site chat where you want them.</span></li>
+                    <li><span class="n">06</span><span><b>Measure.</b> Every send writes back into one source of truth. No second-guessing what worked.</span></li>
+                    <li><span class="n">07</span><span><b>Improve.</b> The system reads its own performance every week. Weak emails get rewritten, customers shift between flows, stale copy rotates out. No human prompt needed.</span></li>
                   </ol>
                 </div>
               </div>
@@ -740,9 +779,9 @@
                   <div class="arch-card"><h6>Locked design-system contract</h6><p>Palette, typography, spacing, layout primitives, voice rules. Every agent reads it before emitting code. Off-brand output cannot get through the gate.</p></div>
                   <div class="arch-card"><h6>Composed-skill architecture</h6><p>Design taste, frontend architecture, brand guidelines and HyperFrames motion graphics compose into a single page-build skill. Operators invoke one skill; the composition fires automatically.</p></div>
                   <div class="arch-card"><h6>Two-turn protocol</h6><p>Turn one emits a greyscale wireframe locking section anatomy. Turn two applies the brand styling layer. A human approval gate sits between them. Drift cannot compound silently.</p></div>
-                  <div class="arch-card"><h6>ConversionWise anatomy</h6><p>Twenty-three sections in ATIDFA order embedded as a corpus the agent consults section by section. Identity gates enforce logo-only nav, one CTA copy at every position, customer-priority section, transformation framed as outcome not deliverable, three-card bundle layout.</p></div>
-                  <div class="arch-card"><h6>Five-stage post-generation gate</h6><p>Audit (structural), critique (anti-slop), quieter (decoration strip), normalize (token conformance), polish (small-detail shipping pass). Every section passes all five before the operator sees it.</p></div>
-                  <div class="arch-card"><h6>HyperFrames motion</h6><p>Hero loops, animated proof blocks and ad-creative variants generated in the same pipeline, conforming to your design tokens.</p></div>
+                  <div class="arch-card"><h6>A proven sales-page anatomy</h6><p>Twenty-three sections in the order that converts: attention, then interest, then desire, then action. Each section locked in its place. Logo-only nav. One call-to-action repeated at every step. Bundle layouts customers actually buy from. No design-by-committee.</p></div>
+                  <div class="arch-card"><h6>Five quality checks on every section</h6><p>Before any page section reaches you it passes through five passes: structural review, anti-slop critique, decoration strip, brand normalisation and a final polish. AI-generated noise gets caught and removed before it ships.</p></div>
+                  <div class="arch-card"><h6>Motion graphics in the same pipeline</h6><p>Animated hero loops, animated proof sections and ad-creative variants generated alongside the page itself. No bouncing between a designer, an animator and a developer to ship one landing page.</p></div>
                 </div>
               </div>
               <div>
@@ -781,29 +820,32 @@
             </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-diagram">
+              <img src="public/diagrams/05-creative-production.png" alt="The six creative workflows" loading="lazy">
+            </div>
             <div class="pillar-body-inner">
               <div>
                 <div class="pb-block">
-                  <h5>Six production workflows</h5>
+                  <h5>Six creative workflows</h5>
                   <ol class="stages">
-                    <li><span class="n">01</span><span><b>UGC video.</b> Native-feel creator-style assets with platform-aware pacing and hooks.</span></li>
-                    <li><span class="n">02</span><span><b>AI persona video.</b> Soul ID-trained brand presenter with consistent face, voice and wardrobe across unlimited assets.</span></li>
-                    <li><span class="n">03</span><span><b>Authority long-form.</b> Founder-led or expert-led video built on VSL structure, eight-to-fifteen-minute runtimes.</span></li>
-                    <li><span class="n">04</span><span><b>Static product imagery.</b> Real-product photography first, brand-aligned compositions, never text-prompted for the hero asset.</span></li>
-                    <li><span class="n">05</span><span><b>3D educational mechanism content.</b> How-it-works explainers for products that need to be understood, not just shown.</span></li>
-                    <li><span class="n">06</span><span><b>Winning-ad clone.</b> Forensic deconstruction of high-performing reference content, reapplied to your brand.</span></li>
+                    <li><span class="n">01</span><span><b>UGC-style video.</b> Native creator-style assets that look like they came from a real person, not a brand. Platform-aware pacing, hook-first opening.</span></li>
+                    <li><span class="n">02</span><span><b>AI brand presenter.</b> Train a consistent face and voice once, then ship unlimited videos with the same presenter. Same wardrobe, same setting, same delivery.</span></li>
+                    <li><span class="n">03</span><span><b>Authority long-form.</b> Founder-led or expert-led video built on a proven sales-letter structure. Eight to fifteen minutes, built for warm traffic.</span></li>
+                    <li><span class="n">04</span><span><b>Static product imagery.</b> Your real product photography composed into branded scenes. Never AI-generated stand-ins where a real photo exists.</span></li>
+                    <li><span class="n">05</span><span><b>3D explainer content.</b> How-it-works animations for products customers need to understand before they buy.</span></li>
+                    <li><span class="n">06</span><span><b>Winning-ad clones.</b> Forensic teardown of high-performing reference content, then rebuilt around your brand and offer.</span></li>
                   </ol>
                 </div>
               </div>
               <div>
                 <div class="pb-block">
-                  <h5>The production architecture</h5>
+                  <h5>What sits underneath</h5>
                   <ul class="bullets">
-                    <li><b>Intelligence Bank.</b> Viral and high-performing reference content scored on engagement, deconstructed for the underlying mechanism.</li>
-                    <li><b>Multi-tool orchestration.</b> GPT Image 2, Nano Banana Pro, Sora 2, Veo 3.1, Kling Motion Control, Seedance, MiniMax voice, Adobe Podcast audio, Topaz upscaling. The framework decides which tool fits; the operator does not freehand.</li>
-                    <li><b>Real-photography-first rule.</b> Your products are always sourced from on-disk photography, never text-prompted.</li>
-                    <li><b>Brand-MD prompt enforcement.</b> Tone, language, banned phrases enforced at the prompt construction layer.</li>
-                    <li><b>Mandatory audio polish.</b> Adobe Podcast Enhance on every video before ship.</li>
+                    <li><b>An Intelligence Bank of viral creative.</b> We constantly catalogue the highest-performing ads on the planet and reverse-engineer why they work. Your creative is informed by what is winning today, not last year's playbook.</li>
+                    <li><b>The best AI image, video and audio tools on the market.</b> We pick the right tool for each job from the leading frontier models. Operators do not freehand the choice.</li>
+                    <li><b>Your real product photography always comes first.</b> AI generates the scenes around it, never the product itself. Customers see your real product.</li>
+                    <li><b>Brand voice rules enforced at the source.</b> Banned phrases, compliance constraints and tone rules are baked into every creative prompt. Off-brand output cannot get through.</li>
+                    <li><b>Studio-grade audio on every video.</b> Adobe Podcast Enhance runs on every clip before ship. No tinny voiceovers, no muddy presenter audio.</li>
                   </ul>
                 </div>
                 <div class="pb-block">
@@ -841,6 +883,9 @@
             </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-diagram">
+              <img src="public/diagrams/06-dashboard-mockup.png" alt="The client dashboard view" loading="lazy">
+            </div>
             <div class="pillar-body-inner">
               <div>
                 <div class="pb-block">
@@ -944,51 +989,55 @@
           <p>Not a ninth service. The engine room that runs across the eight pillars above. The reason the work ships on time, on brand, and on quality. The client experiences it as reliability across the engagement, not as a deliverable in its own right.</p>
         </div>
 
+        <div style="margin:0 0 36px;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);background:#0a0a0f">
+          <img src="public/diagrams/02-ai-ops-substrate.png" alt="The AI operations layer that sits beneath every pillar" loading="lazy" style="width:100%;height:auto;display:block">
+        </div>
+
         <div class="ops-grid">
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v6H3z"/><path d="M3 14h18v6H3z"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></div>
-            <h4>Blueprint-first protocol</h4>
-            <p>Every agent reads its pillar's blueprint before responding. Work that cannot be located on the architecture map surfaces as a scope question, not silently executed.</p>
+            <h4>Every agent has a map</h4>
+            <p>Before doing anything, each AI reads the blueprint for the job. If the request does not fit the map, it surfaces a question for us instead of guessing. No silent off-piste work.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <h4>Anti-drift contract</h4>
-            <p>Blueprint changes go through a changelog. Reality cannot diverge from the documented system. Operators inherit the same map across sessions and across handovers.</p>
+            <h4>Nothing drifts without a record</h4>
+            <p>Every change to the system is versioned and dated. New operators inherit the same map. Your brand's setup does not start from scratch when someone hands off.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-            <h4>Composed-skill model</h4>
-            <p>Skills inherit from each other and override settings explicitly. Operators invoke one skill; the composition fires automatically. No fragile chains, no silent overrides.</p>
+            <h4>Skills stack like building blocks</h4>
+            <p>Each AI skill is composable. Click one button, a whole chain runs: research, write, fact-check, schema, polish. No fragile glue, no broken pipelines.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
-            <h4>Five-stage gate sequence</h4>
-            <p>Audit, critique, quieter, normalize, polish. Every artefact passes all five before reaching you. AI-slop cannot pass the gate.</p>
+            <h4>Five quality gates on every output</h4>
+            <p>Audit the structure. Critique for AI-slop. Strip decoration. Normalise to brand tokens. Polish for ship. Nothing reaches you that has not cleared all five.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a14 14 0 0 1 0 20"/></svg></div>
-            <h4>Vector-indexed brain</h4>
-            <p>The agency's accumulated wiki, knowledge base, memory and project archives, indexed and retrievable on demand. The librarian retrieves. The agent reasons.</p>
+            <h4>A second brain that never forgets</h4>
+            <p>Our nine years of agency know-how, every winning campaign, every brief, every playbook is searchable on demand. Your AI looks it up instead of hallucinating it.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h12"/><path d="M3 18h6"/></svg></div>
-            <h4>Cost-quality cascade</h4>
-            <p>Heavy reasoning runs on frontier models. Routine work cascades to cheaper, faster models. The right tool for the right job at every step of every pillar.</p>
+            <h4>The right AI for the right job</h4>
+            <p>Heavy thinking runs on top-tier models. Routine work runs on faster, cheaper ones. Your work gets the model it needs, never less, never more.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
-            <h4>Two-model code review</h4>
-            <p>Codex review handoff for any meaningful code change. Two-model agreement before ship. Bugs the first model misses, the second one catches.</p>
+            <h4>Two AI models, one verdict</h4>
+            <p>Anything we ship gets reviewed by a second AI before it lands. The first model writes. The second checks. Mistakes caught before you ever see them.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
-            <h4>Per-pillar memory</h4>
-            <p>Context carries cleanly across sessions and operators. The system remembers your brand even when the operator changes seats.</p>
+            <h4>Your context carries between sessions</h4>
+            <p>The system remembers your brand. Different operators across different days pick up exactly where the last one left off. No re-briefing, no repeated mistakes.</p>
           </div>
           <div class="ops-tile">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
-            <h4>Self-improving feedback loops</h4>
-            <p>Each pillar has its own feedback loop. SEO has the monthly audit and the refresh runner. Email has L6 optimisation. Paid Media has its cadence reviews. The system gets better while it runs.</p>
+            <h4>It gets better while it runs</h4>
+            <p>Every pillar audits itself on a cadence. Weak content rewrites itself. Underperforming flows shift. The longer the engagement, the smarter the system on your brand.</p>
           </div>
         </div>
       </div>
@@ -1025,6 +1074,138 @@
           <div class="ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
           <h4>Self-improvement is built in, not bolted on</h4>
           <p>SEO has the monthly audit and the refresh runner. Email has the L6 optimisation loop. Paid Media has its cadence reviews. Creative has the Intelligence Bank feedback channel. The Dashboard has the bug-pattern memory. Improvement compounds while the engagement runs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== PRICING =================== -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Pricing</span>
+          <h2 class="reveal">Take a pillar. Take a few. Or take the full stack.</h2>
+          <p class="reveal reveal-d1">Month-to-month contracts. No long-term lock-in. The full-stack bundle saves around twenty percent versus the same pillars taken separately.</p>
+        </div>
+        <div class="price-tabs reveal reveal-d1" role="tablist">
+          <button class="active" data-tab="ala">À la carte</button>
+          <button data-tab="full">Full stack</button>
+        </div>
+      </div>
+
+      <div class="price-grid" id="tab-ala">
+        <div class="price-card reveal">
+          <span class="lbl">Pillar 01</span>
+          <h4>SEO architecture</h4>
+          <div class="amt">From $3,500<small>per month</small></div>
+          <p>Agentic content engine. Daily articles, weekly refresh, monthly audits.</p>
+          <ul>
+            <li>Up to 30 published articles per month</li>
+            <li>Full publish-and-audit loop</li>
+            <li>Site Health Score every month</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d1">
+          <span class="lbl">Pillar 02</span>
+          <h4>Email and retention</h4>
+          <div class="amt">From $2,500<small>per month</small></div>
+          <p>Seven-step lifecycle system on the ESP you already run.</p>
+          <ul>
+            <li>Up to 12 live flows</li>
+            <li>Self-improving on a weekly cycle</li>
+            <li>Quarterly retention health review</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d2">
+          <span class="lbl">Pillar 03</span>
+          <h4>Paid media, Meta</h4>
+          <div class="amt">From $4,000<small>per month + ad spend</small></div>
+          <p>Tier-1 ad infrastructure plus weekly native-format creative drops.</p>
+          <ul>
+            <li>Strategy, builds, optimisation</li>
+            <li>Weekly creative cadence</li>
+            <li>Monthly creative-strategy review</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d3">
+          <span class="lbl">Pillar 04</span>
+          <h4>Paid media, Google</h4>
+          <div class="amt">From $3,500<small>per month + ad spend</small></div>
+          <p>Whitelisted accounts, four-lever traffic framework, advertorial demand-gen.</p>
+          <ul>
+            <li>Branded, intent, Shopping, advertorial</li>
+            <li>LTV-adjusted ROAS targets</li>
+            <li>Monthly profitability review</li>
+          </ul>
+        </div>
+        <div class="price-card reveal">
+          <span class="lbl">Pillar 05</span>
+          <h4>Web and landing pages</h4>
+          <div class="amt">From $5,000<small>per page · or $1,500/mo retainer</small></div>
+          <p>Conversion-engineered pages on Next.js, shipped to your domain.</p>
+          <ul>
+            <li>Brand-locked design system</li>
+            <li>Five quality gates on every section</li>
+            <li>Motion graphics included</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d1">
+          <span class="lbl">Pillar 06</span>
+          <h4>Creative production</h4>
+          <div class="amt">From $3,000<small>per month</small></div>
+          <p>Weekly creative drops across UGC, AI presenter, static, 3D, authority video.</p>
+          <ul>
+            <li>Six creative workflows on tap</li>
+            <li>Brand presenter trained once, reused forever</li>
+            <li>Studio-grade audio on every video</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d2">
+          <span class="lbl">Pillar 07</span>
+          <h4>Client dashboard</h4>
+          <div class="amt">Included<small>with any active pillar</small></div>
+          <p>Single-pane view of every campaign and every creative across every platform you run.</p>
+          <ul>
+            <li>Live performance, drill-through, CSV export</li>
+            <li>Brand-staff logins included</li>
+            <li>Roadmap expanding across all pillars</li>
+          </ul>
+        </div>
+        <div class="price-card reveal reveal-d3">
+          <span class="lbl">Pillar 08</span>
+          <h4>Onboarding service</h4>
+          <div class="amt">Included<small>with any active pillar</small></div>
+          <p>Hardened intake from signed contract to live engagement on a single rail.</p>
+          <ul>
+            <li>Twenty-four-hour first touch</li>
+            <li>Brand pack collected once, never again</li>
+            <li>Named point of contact for the relationship</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="tab-full" style="display:none">
+        <div class="price-bundle reveal">
+          <div>
+            <span class="section-tag" style="margin-bottom:8px">The Full Stack</span>
+            <h3>All eight pillars. One operating system. One invoice.</h3>
+            <div class="amt">From $12,000<small> / month</small></div>
+            <p>Your entire digital pipeline run by Icarus, lead-gen through retention, on a single dashboard. Saves around twenty percent versus the same pillars taken separately.</p>
+            <span class="save">~$3,500 monthly saving vs à la carte</span>
+          </div>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>SEO architecture</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Email and retention</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Paid media, Meta</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Paid media, Google</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Web and landing pages</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Creative production</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Client dashboard</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Onboarding service</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Dedicated account manager</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg><span>Priority delivery and review</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1102,6 +1283,20 @@
     const pillar = headEl.closest('.pillar');
     pillar.classList.toggle('open');
   }
+
+  // Pricing tab toggle
+  const priceTabs = document.querySelectorAll('.price-tabs button');
+  const tabAla = document.getElementById('tab-ala');
+  const tabFull = document.getElementById('tab-full');
+  priceTabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      priceTabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const t = btn.dataset.tab;
+      if(tabAla) tabAla.style.display = t==='ala' ? 'grid' : 'none';
+      if(tabFull) tabFull.style.display = t==='full' ? 'block' : 'none';
+    });
+  });
 </script>
 </body>
 </html>
