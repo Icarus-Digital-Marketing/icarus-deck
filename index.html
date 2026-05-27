@@ -712,7 +712,7 @@
             <div class="pillar-num"><span class="lbl">Pillar</span>04</div>
             <div class="pillar-text">
               <h3>Lifecycle and Email Retention <span style="color:var(--leaf-3);font-size:14px;font-weight:600;letter-spacing:.04em;display:inline-block;margin-left:8px;padding:3px 10px;border-radius:999px;background:rgba(91,161,46,.10);border:1px solid rgba(91,161,46,.30);vertical-align:middle">Add-on</span></h3>
-              <p>The Retention OS. A seven-layer cross-brand operating system that turns commerce data into lifecycle flows, segments, copy, design, deployment and self-improving optimisation across email, SMS, WhatsApp and on-site chat. Built and proven on VERO; designed to multiply to any brand without code changes.</p>
+              <p>The Retention OS. A brand-agnostic seven-layer operating system that turns your commerce data into lifecycle flows, segments, copy, design, deployment and self-improving optimisation across email, SMS, WhatsApp and on-site chat. Brand inputs change. The OS stays the same.</p>
             </div>
             <div class="pillar-cta">
               <span class="lbl">Open</span>
@@ -731,7 +731,7 @@
                   <h5>The seven layers</h5>
                   <ol class="stages">
                     <li><span class="n">L0</span><span><b>Brand and data intake.</b> Site, PDPs, FAQs, reviews, science pages, founder voice, brand rules. Commerce events from Medusa or your store: orders, customers, subscriptions, refunds. Support data: tickets, chat logs, objection mining.</span></li>
-                    <li><span class="n">L1</span><span><b>Intelligence and customer state.</b> A ten-state customer state machine (Anonymous, Lead, Quiz-complete, Protocol-considered, Carted, First-buyer, Active, At-risk, Lapsed, Suppressed). Four overlay flags (subscriber, advocate, vip, won-back). Eight segmentation dimensions (goal, protocol affinity, value tier, purchase format, replenishment window, engagement, acquisition source, channel consent).</span></li>
+                    <li><span class="n">L1</span><span><b>Intelligence and customer state.</b> A ten-state customer state machine (Anonymous through Suppressed, with intermediate states adapted to your funnel shape). Four overlay flags (subscriber, advocate, vip, won-back). Eight segmentation dimensions (goal, category affinity, value tier, purchase format, replenishment window, engagement, acquisition source, channel consent).</span></li>
                     <li><span class="n">L2</span><span><b>Strategy engine.</b> Lifecycle blueprint. Continuity and advocacy logic (replenishment, subscription, UGC, referrals). Channel and fatigue policy with frequency caps, priority, mutual exclusion. ESP-agnostic. Brand-aware. Machine-readable JSON per flow.</span></li>
                     <li><span class="n">L3</span><span><b>Two content engines.</b> Copy engine (email, SMS, WhatsApp, chat scripts) bound by a runtime-generated compliance gate. Design engine — Claude Code scene-stack pipeline assembling premium scenes into React Email modules with ESP-safe HTML output. Banned terms parse out of the brand spec at run time, never hardcoded.</span></li>
                     <li><span class="n">L4</span><span><b>Multi-channel deployers.</b> Email via Brevo, Klaviyo, or Omnisend. SMS via Brevo SMS or Twilio. WhatsApp via BSP. On-site chat via your widget. Same strategy plus content, different rails.</span></li>
@@ -742,21 +742,22 @@
               </div>
               <div>
                 <div class="pb-block">
-                  <h5>Twelve lifecycle flows</h5>
+                  <h5>Twelve lifecycle flow categories</h5>
                   <ul class="bullets">
-                    <li><b>Welcome (pre-quiz).</b> Email capture, no quiz. 4 emails / 10 days. Goal: quiz completion.</li>
-                    <li><b>Welcome (post-quiz).</b> Quiz complete, no purchase. 5 emails / 14 days. Goal: first order.</li>
-                    <li><b>Abandoned protocol.</b> Result viewed, no PDP add. 3 emails / 72 hr.</li>
-                    <li><b>Abandoned cart.</b> Cart, no checkout. 3 emails / 48 hr.</li>
-                    <li><b>Post-purchase onboarding.</b> 6 emails / 30 days. Adherence plus subscribe.</li>
-                    <li><b>Replenishment.</b> Day 25 of 30-day supply. Reorder or subscription upgrade.</li>
-                    <li><b>Subscriber VIP.</b> Monthly. Retention plus cross-protocol.</li>
-                    <li><b>Win-back.</b> Lapsed 60 days. 3 emails / 14 days.</li>
-                    <li><b>Sunset.</b> No engagement 120 days. 2 emails. Suppression.</li>
-                    <li><b>Advocacy and review request.</b> Day 21 post-purchase. UGC plus reviews.</li>
-                    <li><b>Field Notes broadcast.</b> Weekly. Authority and retention.</li>
-                    <li><b>Protocol drop broadcast.</b> Per launch. Sales spike.</li>
+                    <li><b>Welcome, cold capture.</b> Email capture without further qualification. Goal: first qualifying action.</li>
+                    <li><b>Welcome, qualified lead.</b> First-party data captured (quiz, profile, signup form). Goal: first order.</li>
+                    <li><b>Abandoned consideration.</b> Product viewed or shortlisted, no cart. Recovery within 72 hours.</li>
+                    <li><b>Abandoned cart.</b> Cart, no checkout. Recovery within 48 hours.</li>
+                    <li><b>Post-purchase onboarding.</b> Order placed. Adherence, education, subscription upgrade.</li>
+                    <li><b>Replenishment.</b> Consumable cadence detected. Reorder or subscription nudge.</li>
+                    <li><b>Subscriber VIP.</b> Active subscriber. Retention plus cross-category.</li>
+                    <li><b>Win-back.</b> Lapsed contact. Reactivation window.</li>
+                    <li><b>Sunset.</b> No engagement for the sunset threshold. Suppression.</li>
+                    <li><b>Advocacy and review.</b> Post-purchase advocacy window. UGC and review harvest.</li>
+                    <li><b>Editorial broadcast.</b> Recurring brand newsletter for authority and retention.</li>
+                    <li><b>Launch broadcast.</b> Per product or campaign launch. Sales spike.</li>
                   </ul>
+                  <p style="margin-top:14px;font-size:13.5px;color:var(--ink-3);font-style:italic">Triggers, delays, message counts and exclusions adapt per brand and per category. Frequency caps, flow priority and mutual exclusion enforced at L2.</p>
                 </div>
               </div>
             </div>
@@ -805,9 +806,10 @@
                   </ul>
                 </div>
                 <div class="pb-block">
-                  <h5>Proof point</h5>
+                  <h5>Brand-agnostic by design</h5>
                   <ul class="bullets">
-                    <li><b>VERO is the first brand the OS is adapting to.</b> The L1 state machine and L2 blueprint are live in Supabase. The L3 design pipeline is proven against the VERO launch email (Mode 3 image-first, approved 2026-05-18). The L4 Brevo deployer and L5 event capture are in build for the first end-to-end production proof.</li>
+                    <li>Voice changes per brand. Design changes per brand. ESP changes per brand. The strategy engine, customer-state model, deployment logic and optimisation loop stay reusable.</li>
+                    <li>L1 state machine and L2 blueprint live in Supabase. L3 design pipeline proven in production. Onboarding a new brand is a config swap, not a rebuild.</li>
                   </ul>
                 </div>
                 <div class="pb-block">
