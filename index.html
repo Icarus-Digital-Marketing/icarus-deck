@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Icarus Digital Marketing, the agentic-systems agency</title>
+  <meta name="description" content="The architecture behind your Icarus engagement. Nine pillars. One operating layer. Since 2016 across 200+ restricted-vertical brands.">
+  <link rel="icon" href="public/logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0f;
+      --bg-2:#11111a;
+      --ink:#f6f6f8;
+      --ink-2:rgba(246,246,248,.72);
+      --ink-3:rgba(246,246,248,.5);
+      --line:rgba(246,246,248,.08);
+      --line-2:rgba(246,246,248,.14);
+      --primary:#2E2B5E;
+      --primary-2:#363266;
+      --primary-3:#3A3570;
+      --leaf:#5BA12E;        /* Icarus brand green */
+      --leaf-2:#4A8A24;
+      --leaf-3:#7CC241;
+      --lime:#A2B835;
+      --grad:linear-gradient(135deg,#2E2B5E 0%,#3A3570 55%,#1a1830 100%);
+      --grad-leaf:linear-gradient(135deg,#7CC241 0%,#5BA12E 100%);
+      --shadow:0 30px 80px -30px rgba(0,0,0,.55), 0 8px 30px -10px rgba(0,0,0,.35);
+      --mono:'JetBrains Mono',ui-monospace,monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      background:var(--bg);color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img,video{display:block;max-width:100%}
+    .container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+    .bg-grid{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(46,43,94,.55) 0%, transparent 45%),
+        radial-gradient(circle at 90% 92%, rgba(91,161,46,.10) 0%, transparent 50%),
+        linear-gradient(transparent 0, transparent 39px, rgba(246,246,248,.022) 40px),
+        linear-gradient(90deg, transparent 0, transparent 39px, rgba(246,246,248,.022) 40px);
+      background-size:auto, auto, 40px 40px, 40px 40px;
+    }
+    main{position:relative;z-index:1}
+
+    /* =================== NAV =================== */
+    header.top{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(140%) blur(14px);
+      background:rgba(10,10,15,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .top-inner{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:38px;width:auto;filter:brightness(1.05)}
+    .brand-name{font-size:14px;line-height:1.2;letter-spacing:.04em;color:var(--ink-2)}
+    .brand-name b{display:block;color:var(--ink);font-weight:700;letter-spacing:.06em;font-size:15px}
+    .nav-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:11px 18px;border-radius:999px;
+      background:var(--leaf);color:#0a0a0f;font-weight:600;font-size:14px;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 14px 28px -10px rgba(91,161,46,.55);background:var(--leaf-3)}
+
+    /* =================== HERO =================== */
+    .hero{padding:120px 0 64px;position:relative;overflow:hidden}
+    .hero::before{
+      content:"";position:absolute;left:50%;top:-180px;transform:translateX(-50%);
+      width:1400px;height:1400px;border-radius:50%;
+      background:radial-gradient(circle, rgba(91,161,46,.06) 0%, transparent 55%);
+      pointer-events:none;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(91,161,46,.08);border:1px solid rgba(91,161,46,.28);
+      color:var(--leaf-3);font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    }
+    .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--leaf-3);box-shadow:0 0 12px var(--leaf-3)}
+    .hero h1{
+      font-size:clamp(40px,6.6vw,82px);
+      line-height:1.02;letter-spacing:-.025em;
+      font-weight:800;margin:24px 0 22px;max-width:1080px;
+    }
+    .hero h1 .leaf{
+      background:var(--grad-leaf);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p.lead{font-size:clamp(17px,1.6vw,21px);color:var(--ink-2);max-width:760px;margin:0}
+    .hero-foot{
+      margin-top:40px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;color:var(--ink-3);font-size:13px;
+    }
+    .hero-foot .mono{font-family:var(--mono);color:var(--ink-2)}
+    .hero-foot .sep{width:4px;height:4px;border-radius:50%;background:var(--ink-3)}
+
+    .signature-wrap{
+      margin-top:64px;position:relative;
+      border-radius:24px;overflow:hidden;
+      background:var(--grad);
+      border:1px solid var(--line-2);
+      box-shadow:var(--shadow);
+      aspect-ratio:18/7;
+      display:grid;place-items:center;
+      isolation:isolate;
+    }
+    .signature-wrap img{max-height:78%;width:auto;opacity:.95;mix-blend-mode:screen;filter:saturate(1.1)}
+    .signature-wrap::after{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(70% 90% at 30% 50%, transparent 0%, rgba(10,10,15,.35) 80%),
+        linear-gradient(180deg, transparent 65%, rgba(10,10,15,.55) 100%);
+      pointer-events:none;
+    }
+    .signature-meta{
+      position:absolute;left:32px;bottom:26px;z-index:2;
+      display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);
+    }
+    .signature-meta span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.04em}
+    .signature-meta .d{width:6px;height:6px;border-radius:50%;background:var(--leaf-3)}
+
+    /* =================== SECTION BASE =================== */
+    section.section{padding:104px 0;position:relative}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:34px;flex-wrap:wrap;margin-bottom:54px}
+    .section-head h2{
+      font-size:clamp(32px,3.8vw,50px);font-weight:700;
+      letter-spacing:-.02em;line-height:1.05;margin:0;max-width:760px;
+    }
+    .section-head p{margin:10px 0 0;color:var(--ink-2);max-width:580px;font-size:16px;line-height:1.6}
+    .section-tag{
+      display:inline-flex;align-items:center;gap:10px;
+      color:var(--leaf-3);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .section-tag::before{content:"";width:28px;height:1px;background:var(--leaf-3);display:block}
+
+    /* =================== POSITIONING STRIP =================== */
+    .positioning{
+      padding:64px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(46,43,94,.10), transparent);
+    }
+    .pos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;align-items:start}
+    .pos-item .v{font-family:var(--mono);font-size:32px;color:var(--leaf-3);letter-spacing:-.01em;font-weight:600;line-height:1}
+    .pos-item .l{margin-top:12px;color:var(--ink-2);font-size:13.5px;letter-spacing:.04em;line-height:1.45}
+
+    /* =================== THE STACK DIAGRAM =================== */
+    .stack-wrap{
+      position:relative;border-radius:28px;
+      background:linear-gradient(180deg, rgba(46,43,94,.20), rgba(46,43,94,.04));
+      border:1px solid var(--line-2);
+      padding:54px 48px 36px;overflow:hidden;
+    }
+    .stack-wrap::before{
+      content:"";position:absolute;inset:-1px;border-radius:28px;
+      background:radial-gradient(900px 220px at 50% -10%, rgba(91,161,46,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:1}
+    .stack-pillar{
+      background:rgba(10,10,15,.55);
+      border:1px solid var(--line-2);
+      border-radius:16px;padding:20px;
+      display:flex;flex-direction:column;gap:8px;min-height:130px;
+      transition:transform .35s ease, border-color .35s ease, background .35s ease;
+    }
+    .stack-pillar:hover{transform:translateY(-3px);border-color:rgba(91,161,46,.45);background:rgba(10,10,15,.75)}
+    .stack-pillar .num{font-family:var(--mono);font-size:11px;color:var(--leaf-3);letter-spacing:.16em}
+    .stack-pillar h4{margin:4px 0 2px;font-size:15px;font-weight:700;letter-spacing:-.005em}
+    .stack-pillar p{margin:0;color:var(--ink-2);font-size:13px;line-height:1.45}
+
+    .substrate{
+      margin-top:18px;position:relative;
+      padding:22px 24px;border-radius:16px;
+      background:linear-gradient(135deg, rgba(91,161,46,.14), rgba(46,43,94,.55));
+      border:1px solid rgba(91,161,46,.42);
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+    }
+    .substrate .l{display:flex;align-items:center;gap:18px}
+    .substrate .l svg{width:30px;height:30px;color:var(--leaf-3)}
+    .substrate .l div h4{margin:0;font-size:16px;font-weight:700;letter-spacing:.01em}
+    .substrate .l div p{margin:2px 0 0;color:var(--ink-2);font-size:13px}
+    .substrate .r{font-family:var(--mono);font-size:11px;color:var(--leaf-3);letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+
+    /* =================== PILLAR CARDS =================== */
+    .pillars{display:grid;grid-template-columns:1fr;gap:18px}
+    .pillar{
+      border-radius:22px;border:1px solid var(--line-2);overflow:hidden;
+      background:linear-gradient(180deg, rgba(46,43,94,.16), rgba(10,10,15,.4));
+      transition:border-color .35s ease;
+    }
+    .pillar:hover{border-color:rgba(91,161,46,.35)}
+    .pillar-head{
+      display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:26px;
+      padding:30px 32px;cursor:pointer;
+    }
+    .pillar-head:hover{background:rgba(246,246,248,.02)}
+    .pillar-num{
+      font-family:var(--mono);font-size:28px;font-weight:600;color:var(--leaf-3);
+      letter-spacing:.02em;line-height:1;
+    }
+    .pillar-num .lbl{display:block;font-size:10px;color:var(--ink-3);letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px;font-weight:500}
+    .pillar-text h3{margin:0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+    .pillar-text p{margin:8px 0 0;color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:780px}
+    .pillar-cta{display:flex;align-items:center;gap:14px;color:var(--ink-2);font-size:13px}
+    .pillar-cta .lbl{letter-spacing:.04em}
+    .toggle{
+      width:38px;height:38px;border-radius:50%;border:1px solid var(--line-2);background:transparent;
+      display:grid;place-items:center;color:var(--ink-2);cursor:pointer;
+      transition:transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease;
+    }
+    .pillar.open .toggle{transform:rotate(45deg);background:rgba(91,161,46,.15);border-color:rgba(91,161,46,.45);color:var(--leaf-3)}
+
+    .pillar-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.2,.7,.2,1)}
+    .pillar.open .pillar-body{max-height:2800px}
+    .pillar-body-inner{
+      padding:0 32px 36px;border-top:1px solid var(--line);
+      display:grid;grid-template-columns:1.15fr .85fr;gap:34px;
+    }
+    .pb-block{padding-top:26px}
+    .pb-block h5{
+      margin:0 0 14px;font-size:10.5px;color:var(--leaf-3);font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+      display:flex;align-items:center;gap:10px;
+    }
+    .pb-block h5::before{content:"";width:18px;height:1px;background:var(--leaf-3);display:block}
+    .stages{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+    .stages li{display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:flex-start;color:var(--ink-2);font-size:14.5px;line-height:1.55}
+    .stages li .n{
+      width:28px;height:28px;border-radius:8px;background:rgba(91,161,46,.10);border:1px solid rgba(91,161,46,.32);
+      display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--leaf-3);font-weight:600;
+      margin-top:1px;
+    }
+    .stages li b{color:var(--ink);font-weight:600}
+    .pb-block ul.bullets{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+    .pb-block ul.bullets li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-2);font-size:14.5px;line-height:1.55}
+    .pb-block ul.bullets li::before{
+      content:"";flex:0 0 7px;height:7px;border-radius:50%;background:var(--leaf-3);margin-top:9px;
+      box-shadow:0 0 0 4px rgba(91,161,46,.14);
+    }
+    .pb-block .outcome{
+      padding:16px 18px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(91,161,46,.10), rgba(46,43,94,.20));
+      border:1px solid rgba(91,161,46,.30);
+      color:var(--ink);font-size:14.5px;line-height:1.5;
+    }
+    .pb-block .timeframe{
+      margin-top:14px;display:inline-flex;align-items:center;gap:10px;
+      padding:8px 14px;border-radius:999px;
+      background:rgba(10,10,15,.5);border:1px solid var(--line-2);
+      font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.02em;
+    }
+    .pb-block .timeframe svg{width:14px;height:14px;color:var(--leaf-3)}
+
+    .arch-card{
+      border-radius:14px;padding:18px;border:1px solid var(--line-2);
+      background:rgba(10,10,15,.45);margin-bottom:14px;
+    }
+    .arch-card h6{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.01em}
+    .arch-card p{margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.55}
+
+    /* =================== AI OPS SECTION (substrate detail) =================== */
+    .ai-ops{
+      border-radius:28px;
+      background:linear-gradient(140deg, rgba(46,43,94,.55) 0%, rgba(58,53,112,.30) 60%, rgba(91,161,46,.08) 100%);
+      border:1px solid rgba(91,161,46,.30);
+      padding:60px 54px;position:relative;overflow:hidden;
+    }
+    .ai-ops::before{
+      content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;
+      background:radial-gradient(circle, rgba(91,161,46,.18), transparent 70%);pointer-events:none;
+    }
+    .ai-ops-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:34px;margin-bottom:40px}
+    .ai-ops-head h2{font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-.02em;line-height:1.06;margin:0;max-width:680px}
+    .ai-ops-head p{color:rgba(246,246,248,.78);font-size:15.5px;max-width:480px;margin:0;line-height:1.55}
+    .ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .ops-tile{
+      padding:24px;border-radius:16px;border:1px solid var(--line-2);
+      background:rgba(10,10,15,.45);display:flex;flex-direction:column;gap:10px;min-height:170px;
+    }
+    .ops-tile .icon{
+      width:38px;height:38px;border-radius:10px;background:rgba(91,161,46,.12);border:1px solid rgba(91,161,46,.30);
+      display:grid;place-items:center;color:var(--leaf-3);
+    }
+    .ops-tile .icon svg{width:18px;height:18px}
+    .ops-tile h4{margin:4px 0 0;font-size:15px;font-weight:700;letter-spacing:-.005em}
+    .ops-tile p{margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.55}
+
+    /* =================== CROSS-CUTTING THEMES =================== */
+    .themes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .theme{
+      padding:30px;border-radius:18px;border:1px solid var(--line-2);
+      background:linear-gradient(180deg, rgba(46,43,94,.14), rgba(10,10,15,.4));
+      display:flex;flex-direction:column;gap:14px;
+    }
+    .theme h4{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+    .theme p{margin:0;color:var(--ink-2);font-size:14.5px;line-height:1.6}
+    .theme .ix{
+      width:42px;height:42px;border-radius:11px;background:var(--grad);
+      display:grid;place-items:center;color:var(--leaf-3);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .theme .ix svg{width:22px;height:22px}
+
+    /* =================== KICK-OFF =================== */
+    .kickoff{
+      border-radius:28px;padding:64px 56px;
+      background:var(--grad);position:relative;overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .kickoff::before{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(70% 90% at 80% 30%, rgba(91,161,46,.22), transparent 60%);
+    }
+    .kickoff-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:42px;align-items:start}
+    .kickoff h2{margin:0;font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.06}
+    .kickoff p.lead{margin:14px 0 0;color:rgba(246,246,248,.82);font-size:16.5px;line-height:1.6;max-width:560px}
+    .needs{margin-top:36px;display:flex;flex-direction:column;gap:14px}
+    .need{
+      display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:flex-start;
+      padding:16px 20px;border-radius:12px;
+      background:rgba(10,10,15,.42);border:1px solid var(--line-2);
+    }
+    .need .n{
+      width:30px;height:30px;border-radius:50%;background:var(--leaf);
+      display:grid;place-items:center;color:#0a0a0f;font-weight:700;font-size:13px;
+    }
+    .need h5{margin:0 0 4px;font-size:14.5px;font-weight:700;letter-spacing:.01em}
+    .need p{margin:0;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+    .kickoff-cta{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;
+      background:var(--leaf);color:#0a0a0f;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 30px -12px rgba(91,161,46,.55);background:var(--leaf-3)}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;
+      background:rgba(246,246,248,.06);color:var(--ink);border:1px solid var(--line-2);font-size:14.5px;
+    }
+    .btn-ghost:hover{background:rgba(246,246,248,.10)}
+
+    /* =================== FOOTER =================== */
+    footer{padding:48px 0 60px;border-top:1px solid var(--line);margin-top:60px;color:var(--ink-3);font-size:13px}
+    .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    footer img{height:30px;width:auto;opacity:.85}
+
+    /* =================== REVEAL =================== */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal-d1{transition-delay:.08s}
+    .reveal-d2{transition-delay:.16s}
+    .reveal-d3{transition-delay:.24s}
+
+    /* =================== RESPONSIVE =================== */
+    @media (max-width:1100px){
+      .stack-grid{grid-template-columns:repeat(2,1fr)}
+      .pos-grid{grid-template-columns:repeat(2,1fr)}
+      .ops-grid{grid-template-columns:1fr 1fr}
+      .ai-ops-head{grid-template-columns:1fr}
+      .themes{grid-template-columns:1fr}
+      .kickoff-inner{grid-template-columns:1fr}
+      .pillar-body-inner{grid-template-columns:1fr}
+      .pillar-head{grid-template-columns:60px 1fr auto}
+    }
+    @media (max-width:640px){
+      .pos-grid{grid-template-columns:1fr}
+      .ops-grid{grid-template-columns:1fr}
+      .stack-grid{grid-template-columns:1fr}
+      .ai-ops{padding:40px 28px}
+      .kickoff{padding:40px 28px}
+      .pillar-head{padding:24px}
+      .pillar-body-inner{padding:0 24px 28px}
+      .signature-wrap{aspect-ratio:4/3}
+      section.section{padding:72px 0}
+    }
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<main>
+
+  <!-- =================== NAV =================== -->
+  <header class="top">
+    <div class="container top-inner">
+      <a href="#" class="brand">
+        <img src="public/logo-mark.png" alt="Icarus Digital Marketing">
+      </a>
+      <a class="nav-cta" href="https://calendly.com/icarusdigitalmarketing/15min" target="_blank" rel="noopener">
+        Schedule onboarding
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- =================== HERO =================== -->
+  <section class="hero container">
+    <div class="reveal"><span class="eyebrow"><span class="dot"></span>For your engagement, your onboarding, your stack</span></div>
+    <h1 class="reveal reveal-d1">
+      The architecture behind <span class="leaf">your Icarus engagement.</span>
+    </h1>
+    <p class="lead reveal reveal-d2">
+      Eight pillars. One operating layer beneath them. Built since 2016 across two hundred restricted-vertical brands, fifty million dollars in client revenue. What follows is what runs for you when the kick-off lands.
+    </p>
+    <div class="hero-foot reveal reveal-d3">
+      <span><span class="mono">since</span> 2016</span>
+      <span class="sep"></span>
+      <span><span class="mono">brands</span> 200+</span>
+      <span class="sep"></span>
+      <span><span class="mono">client revenue</span> $50M+</span>
+      <span class="sep"></span>
+      <span><span class="mono">verticals</span> cannabis · peptides · vape · tobacco · supplements · adult</span>
+    </div>
+
+    <div class="signature-wrap reveal">
+      <img src="public/icarus-signature.gif" alt="Icarus brand signature">
+      <div class="signature-meta">
+        <span><span class="d"></span>Icarus brand signature</span>
+        <span>The agentic-systems agency</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== POSITIONING STRIP =================== -->
+  <section class="positioning">
+    <div class="container pos-grid">
+      <div class="pos-item reveal">
+        <div class="v">9 years</div>
+        <div class="l">Operating continuously inside restricted verticals on Meta, Google, TikTok and email infrastructure. Practitioner depth no generalist agency can build from cold.</div>
+      </div>
+      <div class="pos-item reveal reveal-d1">
+        <div class="v">8 pillars</div>
+        <div class="l">SEO, email, paid Meta, paid Google, web, creative, dashboard, onboarding. Each one a real architecture, not a service line.</div>
+      </div>
+      <div class="pos-item reveal reveal-d2">
+        <div class="v">1 layer</div>
+        <div class="l">An agentic operations substrate that runs across every pillar. Blueprint-gated, anti-drift, self-improving. The reason the work ships on-brand, on-quality, on-time.</div>
+      </div>
+      <div class="pos-item reveal reveal-d3">
+        <div class="v">1 dashboard</div>
+        <div class="l">A single client visibility surface. Campaigns, creatives, performance, exports. One login, one place to defend the spend internally.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== THE STACK =================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">The Stack</span>
+          <h2 class="reveal">Eight pillars, one operating layer.</h2>
+          <p class="reveal reveal-d1">Every pillar reads the same brand pack. Every artefact passes the same gate sequence. The system gets better while it runs.</p>
+        </div>
+      </div>
+
+      <div class="stack-wrap reveal reveal-d1">
+        <div class="stack-grid">
+          <div class="stack-pillar"><span class="num">01</span><h4>SEO architecture</h4><p>13-stage publish-and-audit loop, nightly article cadence.</p></div>
+          <div class="stack-pillar"><span class="num">02</span><h4>Email & retention OS</h4><p>Seven-layer system from raw data to live optimisation.</p></div>
+          <div class="stack-pillar"><span class="num">03</span><h4>Paid Meta</h4><p>Whitelisted infrastructure, native-format creative pipeline.</p></div>
+          <div class="stack-pillar"><span class="num">04</span><h4>Paid Google</h4><p>Agentic MCP, four-lever traffic framework, advertorial demand-gen.</p></div>
+          <div class="stack-pillar"><span class="num">05</span><h4>Web & landing pages</h4><p>Two-turn agentic build protocol, ConversionWise anatomy.</p></div>
+          <div class="stack-pillar"><span class="num">06</span><h4>Creative production</h4><p>Six workflows, persona consistency, Intelligence Bank-driven briefs.</p></div>
+          <div class="stack-pillar"><span class="num">07</span><h4>Client dashboard</h4><p>Live ad-level performance, drill-through, exports.</p></div>
+          <div class="stack-pillar"><span class="num">08</span><h4>Onboarding service</h4><p>Hardened intake from signature to first deliverable.</p></div>
+        </div>
+
+        <div class="substrate">
+          <div class="l">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18"/><path d="M3 9h18"/><circle cx="6" cy="6" r="1" fill="currentColor"/><circle cx="6" cy="12" r="1" fill="currentColor"/><circle cx="6" cy="18" r="1" fill="currentColor"/><circle cx="12" cy="6" r="1" fill="currentColor"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+            <div>
+              <h4>The AI operations layer</h4>
+              <p>Runs beneath every pillar above. Not a ninth service.</p>
+            </div>
+          </div>
+          <div class="r">The substrate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== PILLARS =================== -->
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">The Pillars</span>
+          <h2 class="reveal">Open each engine room.</h2>
+          <p class="reveal reveal-d1">Click any pillar to see the architecture, the stages, the visibility surface and the timeline.</p>
+        </div>
+      </div>
+
+      <div class="pillars">
+
+        <!-- =========== PILLAR 01 SEO =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>01</div>
+            <div class="pillar-text">
+              <h3>SEO architecture</h3>
+              <p>An agentic SEO architecture that ships category-leading content nightly and refires it on a freshness gate. Run by a 13-stage publish-and-audit loop that closes the gap most agencies do not even map.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The publish-and-audit loop</h5>
+                  <ol class="stages">
+                    <li><span class="n">1</span><span><b>Keyword auto-promote.</b> A nightly agent refills the ideation queue against your category before the writer touches it. Without this, the pipeline starves in roughly eight days.</span></li>
+                    <li><span class="n">2</span><span><b>Multi-model research.</b> SERP intelligence, competitor mapping, citation harvesting, query intent classification.</span></li>
+                    <li><span class="n">3</span><span><b>Voice-locked draft.</b> Generated against your brand-MD: tone rules, compliance constraints, banned phrases, product naming. Off-brand output cannot pass the gate.</span></li>
+                    <li><span class="n">4</span><span><b>Fact-check gate.</b> Every statistical claim is checked against the cited source. Broken citations and unverified claims surface before publish.</span></li>
+                    <li><span class="n">5</span><span><b>SEO checklist scan.</b> Title length, meta description, header structure, internal-link plan, schema markup, image alt-text.</span></li>
+                    <li><span class="n">6</span><span><b>Schema validation.</b> JSON-LD validated live against your published page.</span></li>
+                    <li><span class="n">7</span><span><b>Internal-link injection.</b> Surgical bidirectional links across the cluster, no duplicate anchors, no orphan pages.</span></li>
+                    <li><span class="n">8</span><span><b>Indexing push.</b> Google Indexing API plus IndexNow to Bing and Yandex on publish.</span></li>
+                    <li><span class="n">9</span><span><b>Content quality score.</b> Zero to one hundred across content depth, on-page SEO, E-E-A-T, technical, and AI-citation readiness.</span></li>
+                    <li><span class="n">10</span><span><b>Refresh runner.</b> Weekly. Consumes a stale-content plan, refires under-performers, anti-thrash gate at thirty days, post-refire verification catches no-op writes.</span></li>
+                    <li><span class="n">11</span><span><b>Monthly Site Health audit.</b> Up to five hundred pages crawled, delegated across fifteen SEO specialist agents, prioritised action queue out the other side.</span></li>
+                    <li><span class="n">12</span><span><b>Monthly Article Performance audit.</b> Every article scored, orphans flagged, cannibalisation detected, stale content categorised for the refresh queue.</span></li>
+                    <li><span class="n">13</span><span><b>Indexation watchdog.</b> Daily URL inspection. Drift alerts when an article slips out of the index.</span></li>
+                  </ol>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>A new article live on your site, indexed by Google and Bing, internally linked into the rest of the cluster.</li>
+                    <li>A monthly Site Health Score with a prioritised action queue.</li>
+                    <li>A monthly Article Performance audit covering every existing page.</li>
+                    <li>Weekly cadence report: articles published, refresh count, average quality score.</li>
+                    <li>Drift alerts when an article scores below threshold, when a citation breaks, or when schema fails.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">A category-authority site that compounds its own traffic, with zero copy you would not sign your name to.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    First article live by week three. Full audit cadence live by week four.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 02 EMAIL =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>02</div>
+            <div class="pillar-text">
+              <h3>Email and retention OS</h3>
+              <p>Retention is a state machine, not a campaign. A seven-layer operating system that turns commerce data into lifecycle flows, segments, copy, design, deployment and continuous optimisation across email, SMS, WhatsApp and on-site chat.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The seven layers</h5>
+                  <ol class="stages">
+                    <li><span class="n">L0</span><span><b>Brand and data intake.</b> Site, PDPs, FAQs, reviews, commerce events, support tickets, returns data. The signal pool the rest of the OS reads from.</span></li>
+                    <li><span class="n">L1</span><span><b>Customer intelligence.</b> A ten-state customer state machine with four overlay flags. Eight segmentation dimensions covering goal, protocol affinity, value tier, purchase format, replenishment window, engagement, acquisition source, channel consent.</span></li>
+                    <li><span class="n">L2</span><span><b>Strategy engine.</b> Lifecycle blueprint (welcome, abandonment, post-purchase, replenishment, win-back, sunset), continuity and advocacy logic, channel and fatigue policy. ESP-agnostic.</span></li>
+                    <li><span class="n">L3</span><span><b>Content engines.</b> Copy and design split into two engines, both bound by a runtime-generated compliance gate. Banned terms parse out of your brand spec at run time, never hardcoded.</span></li>
+                    <li><span class="n">L4</span><span><b>ESP deployers.</b> Brevo, Klaviyo, Omnisend rails, plus SMS, WhatsApp and chat. Same strategy, same content, different rails.</span></li>
+                    <li><span class="n">L5</span><span><b>Event capture.</b> Webhook events flow into a metrics store. One source of truth feeds the optimiser.</span></li>
+                    <li><span class="n">L6</span><span><b>Self-improving loop.</b> Performance analyser surfaces weak nodes, drop-offs, fatigue. A rules updater adjusts segments, transitions, channel mix and frequency. A content updater rotates copy tests and refreshes proof from live support and review data.</span></li>
+                  </ol>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>Human review, four checkpoints only</h5>
+                  <ul class="bullets">
+                    <li>Claims risk.</li>
+                    <li>Pricing strategy.</li>
+                    <li>Final brand sign-off.</li>
+                    <li>Edge-case customer logic.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>A live lifecycle programme covering twelve flows on average: welcome, abandonment, post-purchase, replenishment, subscriber VIP, win-back, sunset, advocacy, broadcast.</li>
+                    <li>Per-flow performance tied to revenue, not vanity metrics.</li>
+                    <li>A quarterly retention health review: subscription rate, replenishment compliance, win-back recovery rate, advocacy yield.</li>
+                    <li>Approval surfaces for the four human gates only.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">Lifecycle revenue you can chart against the OS, not against your operators' time. Lift measured in sixty days. Multiplies cleanly to subsequent brands inside a fortnight once proved on the first.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    First branded flow live in three to four weeks. Twelve-flow coverage by week six to eight.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 03 PAID META =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>03</div>
+            <div class="pillar-text">
+              <h3>Paid media, Meta</h3>
+              <p>A creative-first Meta media engine built for the brands Meta's standard advertising stack will not serve. Whitelisted infrastructure, account architecture engineered for restricted-vertical resilience, native-format creative produced at the cadence the Andromeda algorithm rewards.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The Meta architecture</h5>
+                  <div class="arch-card"><h6>Tier 1 infrastructure</h6><p>Multi-account architecture engineered for restricted-vertical resilience. Your brand sits insulated from platform risk at the structural level, not at the campaign level.</p></div>
+                  <div class="arch-card"><h6>ICP-led brief generator</h6><p>Brand inputs and audience intelligence pulled from our internal Intelligence Bank, then turned into production-ready briefs: adapted hook, framework recommendation (Feel-Felt-Found, PAS-Agitate, Story-Sell), script starter, character description, tool recommendation, platform spec.</p></div>
+                  <div class="arch-card"><h6>Seven-format native-ad library</h6><p>Street interview, two-person conversation, podcast clip, authority VSL, you-vs-future-you skit, comment response, day-in-the-life. Engineered to remove ad signals from the first five seconds.</p></div>
+                  <div class="arch-card"><h6>Awareness-level decision matrix</h6><p>Hook, framework, education depth and CTA strength all keyed to where the audience sits on the L1 to L5 awareness ladder. Default for restricted-vertical clients is L5 to L4, where margin and volume live.</p></div>
+                  <div class="arch-card"><h6>Character consistency at scale</h6><p>Soul ID training, locked-character action transfer, and a brand-recognisable virtual presenter across unlimited videos. Your face stays the same face whether one or one hundred assets ship.</p></div>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>A weekly volume of creative assets calibrated to your testing cadence.</li>
+                    <li>Live performance view in the Icarus Dashboard with creative-level metrics, thumbnail previews, side-by-side comparison.</li>
+                    <li>Monthly creative-strategy review, tying winning hooks back to audience awareness level, format and offer.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">Continuous delivery on accounts most agencies cannot keep alive. Stable spend in a category that punishes amateurs.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    First creative drop live in three to four weeks. Full volume by week six.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 04 PAID GOOGLE =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>04</div>
+            <div class="pillar-text">
+              <h3>Paid media, Google</h3>
+              <p>A whitelisted Google Ads programme that runs branded protection, intent-led non-branded scaling, feed-driven Shopping and PMax, advertorial demand generation, and competitor conquesting. Built on an agentic Google Ads MCP that creates, monitors and optimises campaigns through structured intent, not UI clicks.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The Google architecture</h5>
+                  <div class="arch-card"><h6>Whitelisted account architecture</h6><p>Tobacco, nicotine and peptide-vertical accounts approved through our long-standing relationship with a Google representative. New accounts in these verticals would not get the same approvals from cold.</p></div>
+                  <div class="arch-card"><h6>Locked Day 1 protocol</h6><p>Conversion tracking on your own GTM container, Enhanced Conversions on, dual conversion-action backup, account-level negative-keyword baseline, currency and timezone locked. Zero ad spend until the protocol is green.</p></div>
+                  <div class="arch-card"><h6>Four-lever traffic framework</h6><p>Branded capture, non-branded intent, feed-led prospecting, and demand-generation advertorial. Each lever in its own campaign architecture. No mixing.</p></div>
+                  <div class="arch-card"><h6>Bidding strategy evolution path</h6><p>Manual CPC for the first thirty days. Graduation gates at 30, 45 and 100 conversions per thirty days into Maximise Conversions, Maximise Conversion Value, Target ROAS. Targets adjusted against real margin and repeat-purchase rate.</p></div>
+                  <div class="arch-card"><h6>Advertorial demand-gen play</h6><p>Documented at 4.59x ROAS in supplements. The same content asset doubles as ranking SEO. One investment, two channels.</p></div>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>Live performance view in the Icarus Dashboard at campaign, ad-set and ad level.</li>
+                    <li>Monthly performance review: branded-share analysis, advertorial ROAS, competitor conquest performance, LTV-adjusted profitability.</li>
+                    <li>Direct access to your own GA4, GTM and Merchant Center accounts. We manage, you own the data.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">Profitable Google spend in verticals where new accounts get rejected. LTV-adjusted ROAS, not vanity ROAS.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    Branded campaign live in two to three weeks. Non-branded layer by week four. Shopping and PMax by week six to eight.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 05 WEB =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>05</div>
+            <div class="pillar-text">
+              <h3>Web design and landing pages</h3>
+              <p>An agentic web-build pipeline that turns your brand pack into conversion-engineered landing and sales pages on a locked design system, with motion graphics generated alongside the page rather than as a separate workflow. Ships on Next.js to Vercel under your domain.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The build protocol</h5>
+                  <div class="arch-card"><h6>Locked design-system contract</h6><p>Palette, typography, spacing, layout primitives, voice rules. Every agent reads it before emitting code. Off-brand output cannot get through the gate.</p></div>
+                  <div class="arch-card"><h6>Composed-skill architecture</h6><p>Design taste, frontend architecture, brand guidelines and HyperFrames motion graphics compose into a single page-build skill. Operators invoke one skill; the composition fires automatically.</p></div>
+                  <div class="arch-card"><h6>Two-turn protocol</h6><p>Turn one emits a greyscale wireframe locking section anatomy. Turn two applies the brand styling layer. A human approval gate sits between them. Drift cannot compound silently.</p></div>
+                  <div class="arch-card"><h6>ConversionWise anatomy</h6><p>Twenty-three sections in ATIDFA order embedded as a corpus the agent consults section by section. Identity gates enforce logo-only nav, one CTA copy at every position, customer-priority section, transformation framed as outcome not deliverable, three-card bundle layout.</p></div>
+                  <div class="arch-card"><h6>Five-stage post-generation gate</h6><p>Audit (structural), critique (anti-slop), quieter (decoration strip), normalize (token conformance), polish (small-detail shipping pass). Every section passes all five before the operator sees it.</p></div>
+                  <div class="arch-card"><h6>HyperFrames motion</h6><p>Hero loops, animated proof blocks and ad-creative variants generated in the same pipeline, conforming to your design tokens.</p></div>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>Production-ready pages on your own domain.</li>
+                    <li>A design-system document you keep. Future iterations conform to it.</li>
+                    <li>A page-level performance view in the Icarus Dashboard once tracking is live.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">A page architecture you can grow into, not a one-shot landing page. Subsequent pages on the same brand ship in half the time once the system is locked.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    Three to four weeks for the first page. Two weeks per page thereafter on the same brand.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 06 CREATIVE =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>06</div>
+            <div class="pillar-text">
+              <h3>Creative production</h3>
+              <p>A single production framework that takes brand, audience and viral intelligence and outputs broadcast-quality creative assets across six workflows. Powers Meta paid, organic social, sales pages, blog illustrations and product pages from one source of truth.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>Six production workflows</h5>
+                  <ol class="stages">
+                    <li><span class="n">01</span><span><b>UGC video.</b> Native-feel creator-style assets with platform-aware pacing and hooks.</span></li>
+                    <li><span class="n">02</span><span><b>AI persona video.</b> Soul ID-trained brand presenter with consistent face, voice and wardrobe across unlimited assets.</span></li>
+                    <li><span class="n">03</span><span><b>Authority long-form.</b> Founder-led or expert-led video built on VSL structure, eight-to-fifteen-minute runtimes.</span></li>
+                    <li><span class="n">04</span><span><b>Static product imagery.</b> Real-product photography first, brand-aligned compositions, never text-prompted for the hero asset.</span></li>
+                    <li><span class="n">05</span><span><b>3D educational mechanism content.</b> How-it-works explainers for products that need to be understood, not just shown.</span></li>
+                    <li><span class="n">06</span><span><b>Winning-ad clone.</b> Forensic deconstruction of high-performing reference content, reapplied to your brand.</span></li>
+                  </ol>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>The production architecture</h5>
+                  <ul class="bullets">
+                    <li><b>Intelligence Bank.</b> Viral and high-performing reference content scored on engagement, deconstructed for the underlying mechanism.</li>
+                    <li><b>Multi-tool orchestration.</b> GPT Image 2, Nano Banana Pro, Sora 2, Veo 3.1, Kling Motion Control, Seedance, MiniMax voice, Adobe Podcast audio, Topaz upscaling. The framework decides which tool fits; the operator does not freehand.</li>
+                    <li><b>Real-photography-first rule.</b> Your products are always sourced from on-disk photography, never text-prompted.</li>
+                    <li><b>Brand-MD prompt enforcement.</b> Tone, language, banned phrases enforced at the prompt construction layer.</li>
+                    <li><b>Mandatory audio polish.</b> Adobe Podcast Enhance on every video before ship.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>A weekly drop of finished creative assets ready for media buy or organic post.</li>
+                    <li>A creative production queue visible in the Icarus Creative Dashboard.</li>
+                    <li>Monthly creative-performance review tying outputs to ad performance.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">Native-format creative volume your competitors cannot match. Every asset on-brand because brand-MD enforcement happens before the pixel is generated.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    First drop in two weeks. Steady-state weekly delivery by week three.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 07 DASHBOARD =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>07</div>
+            <div class="pillar-text">
+              <h3>Client dashboard</h3>
+              <p>A single-pane view of every campaign, every creative, every metric across every paid platform you run. Built on Next.js, backed by a Supabase data layer, refreshing on a defined cadence. One login, one place to defend your spend internally.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>What sits inside</h5>
+                  <ul class="bullets">
+                    <li><b>Direct Meta API ingestion</b> through whitelisted infrastructure. Ad-level granularity, video preview rendering, thumbnail capture.</li>
+                    <li><b>Relational data model</b> covering campaigns, ad sets, ads, daily metrics, creatives and assets. Roll-ups to any level are simple SQL aggregations.</li>
+                    <li><b>Meta Ads Manager-style tabbed drill-through:</b> Campaigns → Ad Sets → Ads, with row-click navigation and shareable URL-stateful filtering.</li>
+                    <li><b>Multi-account sync pipeline</b> architected for clients with multiple ad accounts. Parallel execution path, per-account index addressing, idempotent backfill.</li>
+                    <li><b>Per-client login isolation.</b> Your staff log in to your view; nothing leaks across.</li>
+                    <li><b>Bug pattern memory.</b> Every bug, attempted fix and resolution is logged with root-cause analysis. The dashboard gets more reliable every time something breaks.</li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>Live performance view across every paid platform you run with Icarus.</li>
+                    <li>Creative-level drill-down with thumbnail preview and side-by-side comparison.</li>
+                    <li>CSV export for any view, any timeframe.</li>
+                    <li>Your own scoped login. Brand staff get visibility your operators have.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">No more "let me check with the agency and get back to you." You see what we see, when we see it.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    Access provisioned within one week of onboarding. Your brand fully synced and visible by week two.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- =========== PILLAR 08 ONBOARDING =========== -->
+        <article class="pillar reveal">
+          <div class="pillar-head" onclick="togglePillar(this)">
+            <div class="pillar-num"><span class="lbl">Pillar</span>08</div>
+            <div class="pillar-text">
+              <h3>Onboarding service</h3>
+              <p>A hardened intake service that takes you from countersigned contract to live engagement on a single rail. Webhook-triggered the moment the contract lands. Named-sender welcome series. Operator approval gate before any client-facing message ships.</p>
+            </div>
+            <div class="pillar-cta">
+              <span class="lbl">Open</span>
+              <button class="toggle" aria-label="Expand"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
+            </div>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-body-inner">
+              <div>
+                <div class="pb-block">
+                  <h5>The intake spine</h5>
+                  <ul class="bullets">
+                    <li><b>FastAPI service</b> running on the agency's primary infrastructure.</li>
+                    <li><b>SignWell webhook</b> captures the moment the contract is countersigned.</li>
+                    <li><b>State machine</b> tracks each client through intake, welcome, brand-pack collection and pipeline assignment. Nothing falls between operators.</li>
+                    <li><b>Operator approval gate</b> on every client-facing email. Nothing ships from a bot without a human nod.</li>
+                    <li><b>Named sender</b> for client comms. Relationship continuity is built in at the protocol level.</li>
+                    <li><b>Per-client workspace</b> auto-generated to receive brand pack, design system, voice persona, products, keywords, compliance constraints and credentials.</li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>A clean intake flow from signature to first deliverable.</li>
+                    <li>One named point of contact for the relationship.</li>
+                    <li>A brand-pack collection process you fill in once and never again.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Outcome</h5>
+                  <div class="outcome">The first week of the engagement is uneventful. That is the point.</div>
+                  <div class="timeframe">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                    First touch within twenty-four hours of contract countersign. Brand pack collected within seven days.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== AI OPERATIONS LAYER =================== -->
+  <section class="section">
+    <div class="container">
+      <div class="ai-ops reveal">
+        <div class="ai-ops-head">
+          <div>
+            <span class="section-tag" style="margin-bottom:14px">The Substrate</span>
+            <h2>The AI operations layer beneath every pillar.</h2>
+          </div>
+          <p>Not a ninth service. The engine room that runs across the eight pillars above. The reason the work ships on time, on brand, and on quality. The client experiences it as reliability across the engagement, not as a deliverable in its own right.</p>
+        </div>
+
+        <div class="ops-grid">
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v6H3z"/><path d="M3 14h18v6H3z"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></div>
+            <h4>Blueprint-first protocol</h4>
+            <p>Every agent reads its pillar's blueprint before responding. Work that cannot be located on the architecture map surfaces as a scope question, not silently executed.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h4>Anti-drift contract</h4>
+            <p>Blueprint changes go through a changelog. Reality cannot diverge from the documented system. Operators inherit the same map across sessions and across handovers.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+            <h4>Composed-skill model</h4>
+            <p>Skills inherit from each other and override settings explicitly. Operators invoke one skill; the composition fires automatically. No fragile chains, no silent overrides.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+            <h4>Five-stage gate sequence</h4>
+            <p>Audit, critique, quieter, normalize, polish. Every artefact passes all five before reaching you. AI-slop cannot pass the gate.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a14 14 0 0 1 0 20"/></svg></div>
+            <h4>Vector-indexed brain</h4>
+            <p>The agency's accumulated wiki, knowledge base, memory and project archives, indexed and retrievable on demand. The librarian retrieves. The agent reasons.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h12"/><path d="M3 18h6"/></svg></div>
+            <h4>Cost-quality cascade</h4>
+            <p>Heavy reasoning runs on frontier models. Routine work cascades to cheaper, faster models. The right tool for the right job at every step of every pillar.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+            <h4>Two-model code review</h4>
+            <p>Codex review handoff for any meaningful code change. Two-model agreement before ship. Bugs the first model misses, the second one catches.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+            <h4>Per-pillar memory</h4>
+            <p>Context carries cleanly across sessions and operators. The system remembers your brand even when the operator changes seats.</p>
+          </div>
+          <div class="ops-tile">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+            <h4>Self-improving feedback loops</h4>
+            <p>Each pillar has its own feedback loop. SEO has the monthly audit and the refresh runner. Email has L6 optimisation. Paid Media has its cadence reviews. The system gets better while it runs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== CROSS-CUTTING THEMES =================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-tag">Why the stack works as a whole</span>
+          <h2 class="reveal">The pillars are not parallel. They feed each other.</h2>
+        </div>
+      </div>
+
+      <div class="themes">
+        <div class="theme reveal">
+          <div class="ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <h4>One dashboard, every pillar</h4>
+          <p>The Icarus Dashboard is the single visibility surface. Paid Meta, Paid Google, creative performance, SEO ranking, retention revenue, all in one login. The roadmap extends across every pillar so you defend spend from one place, not a stack of tabs.</p>
+        </div>
+        <div class="theme reveal reveal-d1">
+          <div class="ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l4-4 4 4"/><path d="M11 16l4 4 4-4"/><path d="M7 8v4"/><path d="M17 20v-4"/></svg></div>
+          <h4>Creative interlocks both ways</h4>
+          <p>Paid Meta and Paid Google feed the creative brief generator with audience intelligence and winning hooks. Creative supplies the hero assets, motion loops, persona videos and static imagery that the web pillar embeds into landing pages. The output of one pillar is the input of another by design.</p>
+        </div>
+        <div class="theme reveal">
+          <div class="ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+          <h4>Brand-MD enforcement is the quality contract</h4>
+          <p>Every pillar reads the same brand pack. Voice rules, compliance constraints, banned phrases, product naming, design tokens, photography guardrails. Off-brand output cannot happen silently. It cannot pass the gate.</p>
+        </div>
+        <div class="theme reveal reveal-d1">
+          <div class="ix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
+          <h4>Self-improvement is built in, not bolted on</h4>
+          <p>SEO has the monthly audit and the refresh runner. Email has the L6 optimisation loop. Paid Media has its cadence reviews. Creative has the Intelligence Bank feedback channel. The Dashboard has the bug-pattern memory. Improvement compounds while the engagement runs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== KICK-OFF =================== -->
+  <section class="container" style="padding-bottom:24px">
+    <div class="kickoff reveal">
+      <div class="kickoff-inner">
+        <div>
+          <span class="section-tag" style="margin-bottom:14px">Begin the engagement</span>
+          <h2>Three things from you, then the work starts.</h2>
+          <p class="lead">Everything else is on us. Most clients are operationally live across their first pillar within two to three weeks of brand-pack handover.</p>
+
+          <div class="needs">
+            <div class="need">
+              <div class="n">1</div>
+              <div>
+                <h5>Practitioner profile</h5>
+                <p>Who runs the brand on your side. The single point of contact for the engagement.</p>
+              </div>
+            </div>
+            <div class="need">
+              <div class="n">2</div>
+              <div>
+                <h5>Brand voice document</h5>
+                <p>Tone, positioning, banned phrases, compliance constraints. We take it from there.</p>
+              </div>
+            </div>
+            <div class="need">
+              <div class="n">3</div>
+              <div>
+                <h5>Product and offer list</h5>
+                <p>Hero products, secondary catalogue, bundle structures, repeat-purchase windows. We map the rest from your commerce platform.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kickoff-cta">
+          <a class="btn-primary" href="https://calendly.com/icarusdigitalmarketing/15min" target="_blank" rel="noopener">
+            Schedule onboarding intake
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn-ghost" href="mailto:hello@icarusdigitalmarketing.com">hello@icarusdigitalmarketing.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="container foot-inner">
+      <img src="public/logo-mark.png" alt="Icarus Digital Marketing">
+      <div>© 2026 Icarus Digital Marketing. The agentic-systems agency for restricted industries.</div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.10, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Pillar expand
+  function togglePillar(headEl){
+    const pillar = headEl.closest('.pillar');
+    pillar.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
