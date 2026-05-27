@@ -712,7 +712,7 @@
             <div class="pillar-num"><span class="lbl">Pillar</span>04</div>
             <div class="pillar-text">
               <h3>Lifecycle and Email Retention <span style="color:var(--leaf-3);font-size:14px;font-weight:600;letter-spacing:.04em;display:inline-block;margin-left:8px;padding:3px 10px;border-radius:999px;background:rgba(91,161,46,.10);border:1px solid rgba(91,161,46,.30);vertical-align:middle">Add-on</span></h3>
-              <p>Retention is a state machine, not a campaign. A seven-layer operating system that turns commerce data into lifecycle flows, segments, copy, design, deployment and continuous optimisation across email, SMS, WhatsApp and on-site chat. Pilot-first add-on rather than standalone retainer.</p>
+              <p>The Retention OS. A seven-layer cross-brand operating system that turns commerce data into lifecycle flows, segments, copy, design, deployment and self-improving optimisation across email, SMS, WhatsApp and on-site chat. Built and proven on VERO; designed to multiply to any brand without code changes.</p>
             </div>
             <div class="pillar-cta">
               <span class="lbl">Open</span>
@@ -723,21 +723,67 @@
           </div>
           <div class="pillar-body">
             <div class="pillar-diagram">
-              <img src="public/diagrams/04-email-architecture.png" alt="The email and retention seven-layer architecture" loading="lazy">
+              <img src="public/diagrams/04-email-architecture.png" alt="The Retention OS seven-layer architecture" loading="lazy">
             </div>
             <div class="pillar-body-inner">
               <div>
                 <div class="pb-block">
-                  <h5>How it works, in seven steps</h5>
+                  <h5>The seven layers</h5>
                   <ol class="stages">
-                    <li><span class="n">01</span><span><b>Listen.</b> We pull everything you already know about your customers from your site, store, reviews, support tickets. That is the pool every email reads from.</span></li>
-                    <li><span class="n">02</span><span><b>Sort.</b> Every customer sits in one of ten clear states (new, browsing, abandoned, first-time buyer, repeat, lapsed) with flags for VIP, advocate, replenishment due.</span></li>
-                    <li><span class="n">03</span><span><b>Plan.</b> Lifecycle map per brand: welcome, abandoned cart, post-purchase, replenishment, win-back, sunset, advocacy.</span></li>
-                    <li><span class="n">04</span><span><b>Write and design.</b> Copy and visuals on rails. Locked to your brand voice and compliance rules. Off-brand emails cannot ship.</span></li>
-                    <li><span class="n">05</span><span><b>Deploy.</b> Klaviyo, Brevo, Omnisend, or your ESP of choice. Add SMS, WhatsApp, on-site chat where you want them.</span></li>
-                    <li><span class="n">06</span><span><b>Measure.</b> Every send writes back into one source of truth.</span></li>
-                    <li><span class="n">07</span><span><b>Improve.</b> The system reads its own performance every week. Weak emails get rewritten, customers shift between flows, stale copy rotates out.</span></li>
+                    <li><span class="n">L0</span><span><b>Brand and data intake.</b> Site, PDPs, FAQs, reviews, science pages, founder voice, brand rules. Commerce events from Medusa or your store: orders, customers, subscriptions, refunds. Support data: tickets, chat logs, objection mining.</span></li>
+                    <li><span class="n">L1</span><span><b>Intelligence and customer state.</b> A ten-state customer state machine (Anonymous, Lead, Quiz-complete, Protocol-considered, Carted, First-buyer, Active, At-risk, Lapsed, Suppressed). Four overlay flags (subscriber, advocate, vip, won-back). Eight segmentation dimensions (goal, protocol affinity, value tier, purchase format, replenishment window, engagement, acquisition source, channel consent).</span></li>
+                    <li><span class="n">L2</span><span><b>Strategy engine.</b> Lifecycle blueprint. Continuity and advocacy logic (replenishment, subscription, UGC, referrals). Channel and fatigue policy with frequency caps, priority, mutual exclusion. ESP-agnostic. Brand-aware. Machine-readable JSON per flow.</span></li>
+                    <li><span class="n">L3</span><span><b>Two content engines.</b> Copy engine (email, SMS, WhatsApp, chat scripts) bound by a runtime-generated compliance gate. Design engine — Claude Code scene-stack pipeline assembling premium scenes into React Email modules with ESP-safe HTML output. Banned terms parse out of the brand spec at run time, never hardcoded.</span></li>
+                    <li><span class="n">L4</span><span><b>Multi-channel deployers.</b> Email via Brevo, Klaviyo, or Omnisend. SMS via Brevo SMS or Twilio. WhatsApp via BSP. On-site chat via your widget. Same strategy plus content, different rails.</span></li>
+                    <li><span class="n">L5</span><span><b>Execution and event capture.</b> Live performance data: opens, clicks, revenue per message, repeat rate, reviews, subscription state, support themes. Every event writes back into one Supabase metrics store. One source of truth for the optimiser.</span></li>
+                    <li><span class="n">L6</span><span><b>Self-improving optimisation loop.</b> Three sub-loops: performance analyser (surfaces weak nodes, dropoffs, fatigue), rules updater (adjusts segments, transitions, channel mix, frequency), content updater (rotates copy tests, refreshes proof from live support and review data).</span></li>
                   </ol>
+                </div>
+              </div>
+              <div>
+                <div class="pb-block">
+                  <h5>Twelve lifecycle flows</h5>
+                  <ul class="bullets">
+                    <li><b>Welcome (pre-quiz).</b> Email capture, no quiz. 4 emails / 10 days. Goal: quiz completion.</li>
+                    <li><b>Welcome (post-quiz).</b> Quiz complete, no purchase. 5 emails / 14 days. Goal: first order.</li>
+                    <li><b>Abandoned protocol.</b> Result viewed, no PDP add. 3 emails / 72 hr.</li>
+                    <li><b>Abandoned cart.</b> Cart, no checkout. 3 emails / 48 hr.</li>
+                    <li><b>Post-purchase onboarding.</b> 6 emails / 30 days. Adherence plus subscribe.</li>
+                    <li><b>Replenishment.</b> Day 25 of 30-day supply. Reorder or subscription upgrade.</li>
+                    <li><b>Subscriber VIP.</b> Monthly. Retention plus cross-protocol.</li>
+                    <li><b>Win-back.</b> Lapsed 60 days. 3 emails / 14 days.</li>
+                    <li><b>Sunset.</b> No engagement 120 days. 2 emails. Suppression.</li>
+                    <li><b>Advocacy and review request.</b> Day 21 post-purchase. UGC plus reviews.</li>
+                    <li><b>Field Notes broadcast.</b> Weekly. Authority and retention.</li>
+                    <li><b>Protocol drop broadcast.</b> Per launch. Sales spike.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="pillar-body-inner" style="padding-top:0;margin-top:-18px">
+              <div>
+                <div class="pb-block">
+                  <h5>Eleven named agents under the hood</h5>
+                  <ul class="bullets">
+                    <li><b>Brand intake</b> · ingests your site, PDPs, FAQs, reviews into a structured brief.</li>
+                    <li><b>State tracker</b> · maintains every contact's current state on every event.</li>
+                    <li><b>Segmenter</b> · applies the eight-dimension segmentation rules.</li>
+                    <li><b>Strategy planner</b> · picks which flows to enable, produces the blueprint JSON.</li>
+                    <li><b>Copywriter</b> · drafts copy per flow node against your brand voice and the ESP gate.</li>
+                    <li><b>Designer</b> · Claude Code scene-stack to React Email to ESP-safe HTML.</li>
+                    <li><b>QA / compliance gate</b> · pre-send check; blocks hard fails, flags soft fails.</li>
+                    <li><b>Deployer</b> · pushes flows to Brevo, Klaviyo, or your ESP via API.</li>
+                    <li><b>Event capture</b> · writes ESP webhook payloads to Supabase.</li>
+                    <li><b>Performance analyser</b> · surfaces what is broken, what is rising, what is stale.</li>
+                    <li><b>Optimiser</b> · applies approved test rotations, updates the blueprint.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Tech stack underneath</h5>
+                  <div class="arch-card"><h6>Orchestration</h6><p>n8n on a Hetzner VPS wires every agent and every API.</p></div>
+                  <div class="arch-card"><h6>Data store</h6><p>Supabase for customer state, events, metrics, knowledge base. One source of truth.</p></div>
+                  <div class="arch-card"><h6>Agent runtime</h6><p>Claude Code, Codex, Claude Opus 4.7 power the strategy, copy, design, optimisation agents.</p></div>
+                  <div class="arch-card"><h6>Design pipeline</h6><p>GPT Image 2 + Nano Banana Pro generate scenes. React Email packages them into ESP-safe HTML.</p></div>
                 </div>
               </div>
               <div>
@@ -745,8 +791,23 @@
                   <h5>Add-on positioning</h5>
                   <ul class="bullets">
                     <li>Best paired with active Paid Acquisition or SEO retainer so we have demand to retain.</li>
-                    <li>Pilots first with one client at a time, then generalises across the book.</li>
-                    <li>Human review scoped to four checkpoints only: claims, pricing, sign-off, edge cases.</li>
+                    <li>Pilots with one client at a time, then multiplies cleanly to subsequent brands inside a fortnight once proved.</li>
+                    <li>Human review scoped to four checkpoints only: claims risk, pricing strategy, final brand sign-off, edge-case customer logic. Everything else runs without human review.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>What you see</h5>
+                  <ul class="bullets">
+                    <li>Live lifecycle programme covering twelve flows on average.</li>
+                    <li>Per-flow performance tied to revenue, not vanity metrics.</li>
+                    <li>Quarterly retention health review: subscription rate, replenishment compliance, win-back recovery rate, advocacy yield.</li>
+                    <li>Approval surfaces for the four human gates only.</li>
+                  </ul>
+                </div>
+                <div class="pb-block">
+                  <h5>Proof point</h5>
+                  <ul class="bullets">
+                    <li><b>VERO is the first brand the OS is adapting to.</b> The L1 state machine and L2 blueprint are live in Supabase. The L3 design pipeline is proven against the VERO launch email (Mode 3 image-first, approved 2026-05-18). The L4 Brevo deployer and L5 event capture are in build for the first end-to-end production proof.</li>
                   </ul>
                 </div>
                 <div class="pb-block">
